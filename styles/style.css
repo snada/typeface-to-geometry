@@ -1,0 +1,29 @@
+body {
+  background-color: #004C86;
+  -webkit-user-select: none;
+  cursor: default;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  font: 10px arial, sans-serif;
+  color: white;
+  padding: 0px;
+  margin: 0px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.drop {
+  border: 4px dashed #22805C;
+  margin: 0 auto;
+  height: 90%;
+  width: 90%;
+}
+
+.drop.hover {
+  border: 4px dashed #00A44E;
+}

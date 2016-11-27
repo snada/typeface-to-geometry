@@ -1,0 +1,32 @@
+const THREE = require("three");
+import { hashHistory } from 'react-router';
+
+export const FONT_LOADED = 'FONT_LOADED';
+export const fontLoaded = (font) => {
+  return ({
+    type: FONT_LOADED,
+    font
+  });
+};
+
+export const JSON_DROPPED = 'JSON_DROPPED';
+export const jsonDropped = (files) => {
+  return dispatch => {
+    if(files[0] === undefined) {
+      return { type: JSON_DROPPED, font: {} };
+    } else {
+      let loader = new THREE.FontLoader();
+      loader.load(files[0].path, (loadedFont) => {
+        hashHistory.push('editor');
+        dispatch(fontLoaded(loadedFont));
+      });
+    }
+  };
+};
+
+export const BACK_PRESSED = 'BACK_PRESSED';
+export const backPressed = () => {
+  return ({
+    type: BACK_PRESSED
+  });
+};
