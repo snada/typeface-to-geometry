@@ -24,6 +24,15 @@ export const jsonDropped = (files) => {
   };
 };
 
+export const WINDOW_RESIZED = 'WINDOW_RESIZED';
+export const windowResized = (width, height) => {
+  return({
+    type: WINDOW_RESIZED,
+    width,
+    height
+  });
+};
+
 export const BACK_PRESSED = 'BACK_PRESSED';
 export const backPressed = () => {
   return ({

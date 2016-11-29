@@ -14,9 +14,10 @@ import { Router, hashHistory, Route, IndexRoute, Link } from 'react-router';
 import font from './reducers/font';
 import glyphs from './reducers/glyphs';
 import segments from './reducers/segments';
+import windowSize from './reducers/windowSize';
 
 let store = createStore(
-  combineReducers({ font, glyphs, segments }),
+  combineReducers({ font, glyphs, segments, windowSize }),
   applyMiddleware(thunk, createLogger())
 );
 
