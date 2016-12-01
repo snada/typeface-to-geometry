@@ -16,9 +16,10 @@ export const jsonDropped = (files) => {
       return { type: JSON_DROPPED, font: {} };
     } else {
       let loader = new THREE.FontLoader();
+
       loader.load(files[0].path, (loadedFont) => {
-        hashHistory.push('editor');
         dispatch(fontLoaded(loadedFont));
+        hashHistory.push('editor');
       });
     }
   };

@@ -1,5 +1,8 @@
 import React from 'react';
+import React3 from 'react-three-renderer';
+import THREE from 'three';
 import ReactDOM from 'react-dom';
+
 import { connect } from 'react-redux';
 import { hashHistory, Link } from 'react-router';
 
@@ -14,7 +17,7 @@ class EditorScene extends React.Component {
     this.props.windowResized(updateWidth, updateHeight);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.updateDimensions();
     _f = this.updateDimensions.bind(this);
     window.addEventListener("resize", _f);
@@ -24,13 +27,22 @@ class EditorScene extends React.Component {
     window.removeEventListener("resize", _f);
   }
 
+  _onAnimate() {
+  }
+
   render() {
     return (
-      <div>
-        <div>Font is: {this.props.font.data ? JSON.stringify(this.props.font.data.familyName) : 'wait...'}</div>
-        <br />
-        <button onClick={this.props.backPressed}>Go back</button>
-      </div>
+      <React3 mainCamera="camera" antialias={true} width={this.props.width} height={this.props.height} onAnimate={this._onAnimate}>
+        <scene>
+          <perspectiveCamera name="camera" fov={75} aspect={this.props.width / this.props.height} near={0.1} far={100}
+            position={new THREE.Vector3(0, 0, 5)}
+          />
+          <mesh rotation={new THREE.Euler(0.1, 0.1, 0)}>
+            <textGeometry font={this.props.font} text={'test'} size={1} height={0} curveSegments={1} />
+            <meshBasicMaterial color={0x00ff00} />
+          </mesh>
+        </scene>
+      </React3>
     );
   }
 }
@@ -38,9 +50,12 @@ class EditorScene extends React.Component {
 EditorScene.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
+  font: React.PropTypes.object
 };
 
 const mapStateToProps = (state) => ({
+  width: state.windowSize.width,
+  height: state.windowSize.height,
   font: state.font
 });
 
