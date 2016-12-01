@@ -11,13 +11,14 @@ import createLogger from 'redux-logger';
 
 import { Router, hashHistory, Route, IndexRoute, Link } from 'react-router';
 
+import text from './reducers/text';
 import font from './reducers/font';
 import glyphs from './reducers/glyphs';
 import segments from './reducers/segments';
 import windowSize from './reducers/windowSize';
 
 let store = createStore(
-  combineReducers({ font, glyphs, segments, windowSize }),
+  combineReducers({ text, font, glyphs, segments, windowSize }),
   applyMiddleware(thunk, createLogger())
 );
 

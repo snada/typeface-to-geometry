@@ -25,6 +25,14 @@ export const jsonDropped = (files) => {
   };
 };
 
+export const TEXT_CHANGED = 'TEXT_CHANGED';
+export const textChanged = (text) => {
+  return({
+    type: TEXT_CHANGED,
+    text
+  });
+};
+
 export const WINDOW_RESIZED = 'WINDOW_RESIZED';
 export const windowResized = (width, height) => {
   return({
