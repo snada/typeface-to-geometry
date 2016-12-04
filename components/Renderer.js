@@ -20,7 +20,7 @@ class Renderer extends React.Component {
             <textGeometry font={this.props.font} text={this.props.text} size={1} height={0} curveSegments={1} dynamic={true} />
             <meshBasicMaterial color={0x00ff00} wireframe={false} />
           </mesh>
-          <gridHelper size={10} step={1} />
+          <gridHelper size={5} step={10} />
         </scene>
       </React3>
     );
