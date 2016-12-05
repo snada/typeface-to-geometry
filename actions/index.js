@@ -33,6 +33,14 @@ export const textChanged = (text) => {
   });
 };
 
+export const WIREFRAME_SWITCHED = 'WIREFRAME_SWITCHED';
+export const wireframeSwitched = (value) => {
+  return({
+    type: WIREFRAME_SWITCHED,
+    value
+  });
+};
+
 export const WINDOW_RESIZED = 'WINDOW_RESIZED';
 export const windowResized = (width, height) => {
   return({

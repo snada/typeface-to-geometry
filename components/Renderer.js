@@ -18,7 +18,7 @@ class Renderer extends React.Component {
           />
           <mesh>
             <textGeometry font={this.props.font} text={this.props.text} size={1} height={0} curveSegments={1} dynamic={true} />
-            <meshBasicMaterial color={0x00ff00} wireframe={false} />
+            <meshBasicMaterial color={0x00ff00} wireframe={this.props.wireframe} />
           </mesh>
           <gridHelper size={5} step={10} />
         </scene>
@@ -36,6 +36,8 @@ Renderer.propTypes = {
 
 const mapStateToProps = (state) => ({
   text: state.text,
+  wireframe: state.wireframe,
+  segments: state.segments,
   font: state.font
 });
 

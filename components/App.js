@@ -15,10 +15,11 @@ import text from './reducers/text';
 import font from './reducers/font';
 import glyphs from './reducers/glyphs';
 import segments from './reducers/segments';
+import wireframe from './reducers/wireframe';
 import windowSize from './reducers/windowSize';
 
 let store = createStore(
-  combineReducers({ text, font, glyphs, segments, windowSize }),
+  combineReducers({ text, font, glyphs, segments, wireframe, windowSize }),
   applyMiddleware(thunk, createLogger())
 );
 
