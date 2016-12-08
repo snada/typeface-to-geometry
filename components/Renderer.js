@@ -17,7 +17,14 @@ class Renderer extends React.Component {
             lookAt={new THREE.Vector3(0, 0, 0)}
           />
           <mesh>
-            <textGeometry font={this.props.font} text={this.props.text} size={1} height={0} curveSegments={1} dynamic={true} />
+            <textGeometry
+              font={this.props.font}
+              text={this.props.text}
+              size={1}
+              height={0}
+              curveSegments={this.props.segments}
+              dynamic={true}
+            />
             <meshBasicMaterial color={0x00ff00} wireframe={this.props.wireframe} />
           </mesh>
           <gridHelper size={5} step={10} />

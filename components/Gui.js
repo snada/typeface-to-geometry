@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { textChanged, wireframeSwitched } from '../actions';
+import { textChanged, segmentsChanged, wireframeSwitched } from '../actions';
 
 const guiStyle = {
   position: 'fixed',
@@ -16,18 +16,25 @@ class Gui extends React.Component {
         <input type="text" value={this.props.text} onChange={this.props.textChanged} style={guiStyle} />
         <br /><br />
         <input type="checkbox" onClick={this.props.wireframeSwitched} /> Wireframe
+        <br /><br />
+        <input type="range" value={this.props.segments} min={1} max={10} step={1} onChange={this.props.segmentsChanged} /> Segments
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  text: state.text
+  text: state.text,
+  segments: state.segments
 });
 
 const mapDispatchToProps = (dispatch) => ({
   textChanged: (event) => {
     dispatch(textChanged(event.target.value));
+  },
+
+  segmentsChanged: (event) => {
+    dispatch(segmentsChanged(event.target.value));
   },
 
   wireframeSwitched: (event) => {

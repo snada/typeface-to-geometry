@@ -25,6 +25,14 @@ export const jsonDropped = (files) => {
   };
 };
 
+export const SEGMENTS_CHANGED = 'SEGMENTS_CHANGED';
+export const segmentsChanged = (segments) => {
+  return({
+    type: SEGMENTS_CHANGED,
+    segments
+  });
+};
+
 export const TEXT_CHANGED = 'TEXT_CHANGED';
 export const textChanged = (text) => {
   return({
