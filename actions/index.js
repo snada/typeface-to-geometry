@@ -33,6 +33,14 @@ export const segmentsChanged = (segments) => {
   });
 };
 
+export const HEIGHT_CHANGED = 'HEIGHT_CHANGED';
+export const heightChanged = (height) => {
+  return({
+    type: HEIGHT_CHANGED,
+    height
+  });
+};
+
 export const TEXT_CHANGED = 'TEXT_CHANGED';
 export const textChanged = (text) => {
   return({

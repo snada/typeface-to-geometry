@@ -21,7 +21,7 @@ class Renderer extends React.Component {
               font={this.props.font}
               text={this.props.text}
               size={1}
-              height={0}
+              height={this.props.height}
               curveSegments={this.props.segments}
               dynamic={true}
             />
@@ -45,7 +45,8 @@ const mapStateToProps = (state) => ({
   text: state.text,
   wireframe: state.wireframe,
   segments: state.segments,
-  font: state.font
+  font: state.font,
+  height: state.height
 });
 
 export default connect(
