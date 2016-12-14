@@ -31,7 +31,7 @@ class EditorScene extends React.Component {
     return (
       <div>
         <Gui />
-        <Renderer width={this.props.windowSize.width} height={this.props.windowSize.height}/>
+        <Renderer windowWidth={this.props.windowSize.width} windowHeight={this.props.windowSize.height}/>
       </div>
     );
   }

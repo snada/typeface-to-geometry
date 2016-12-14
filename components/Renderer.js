@@ -10,9 +10,9 @@ import { textChanged } from '../actions';
 class Renderer extends React.Component {
   render() {
     return (
-      <React3 mainCamera="camera" antialias={true} width={this.props.width} height={this.props.height} onAnimate={this._onAnimate}>
+      <React3 mainCamera="camera" antialias={true} width={this.props.windowWidth} height={this.props.windowHeight} onAnimate={this._onAnimate}>
         <scene>
-          <perspectiveCamera name="camera" fov={75} aspect={this.props.width / this.props.height} near={0.1} far={100}
+          <perspectiveCamera name="camera" fov={75} aspect={this.props.windowWidth / this.props.windowHeight} near={0.1} far={100}
             position={new THREE.Vector3(-2, 1, 5)}
             lookAt={new THREE.Vector3(0, 0, 0)}
           />
@@ -35,8 +35,8 @@ class Renderer extends React.Component {
 }
 
 Renderer.propTypes = {
-  width: React.PropTypes.number.isRequired,
-  height: React.PropTypes.number.isRequired,
+  windowWidth: React.PropTypes.number.isRequired,
+  windowHeight: React.PropTypes.number.isRequired,
   text: React.PropTypes.string.isRequired,
   font: React.PropTypes.object.isRequired
 }
