@@ -16,6 +16,10 @@ class Renderer extends React.Component {
             position={new THREE.Vector3(-2, 1, 5)}
             lookAt={new THREE.Vector3(0, 0, 0)}
           />
+          <ambientLight color={0x000000} />
+          <pointLight intensity={1} distance={0} position={new THREE.Vector3(0, 10, 0)}/>
+          <pointLight intensity={1} distance={0} position={new THREE.Vector3(5, 10, 5)}/>
+          <pointLight intensity={1} distance={0} position={new THREE.Vector3(-5, -10, -5)}/>
           <mesh>
             <textGeometry
               font={this.props.font}
@@ -25,7 +29,13 @@ class Renderer extends React.Component {
               curveSegments={this.props.segments}
               dynamic={true}
             />
-            <meshBasicMaterial color={0x00ff00} wireframe={this.props.wireframe} />
+            <meshPhongMaterial
+		          color={0x156289}
+		          emissive={0x072534}
+              side={THREE.DoubleSide}
+              shading={THREE.FlatShading}
+              wireframe={this.props.wireframe}
+            />
           </mesh>
           <gridHelper size={5} step={10} />
         </scene>
