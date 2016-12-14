@@ -12,9 +12,7 @@ let _f;
 
 class EditorScene extends React.Component {
   updateDimensions() {
-    let updateWidth  = window.innerWidth;
-    let updateHeight = window.innerHeight;
-    this.props.windowResized(updateWidth, updateHeight);
+    this.props.windowResized(window.innerWidth, window.innerHeight);
   }
 
   componentWillMount() {
@@ -33,15 +31,14 @@ class EditorScene extends React.Component {
     return (
       <div>
         <Gui />
-        <Renderer width={this.props.width} height={this.props.height}/>
+        <Renderer width={this.props.windowSize.width} height={this.props.windowSize.height}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  width: state.windowSize.width,
-  height: state.windowSize.height,
+  windowSize: state.windowSize
 });
 
 const mapDispatchToProps = (dispatch) => ({
