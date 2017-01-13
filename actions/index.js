@@ -1,6 +1,15 @@
 const THREE = require("three");
 import { hashHistory } from 'react-router';
 
+export const CAMERA_CHANGED = 'CAMERA_CHANGED';
+export const cameraChanged = (position, rotation) => {
+  return({
+    type: CAMERA_CHANGED,
+    position,
+    rotation
+  })
+};
+
 export const FONT_LOADED = 'FONT_LOADED';
 export const fontLoaded = (font) => {
   return ({

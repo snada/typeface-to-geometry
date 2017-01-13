@@ -1,37 +1,33 @@
 import React from 'react';
 
 import { connect } from 'react-redux';
-import { hashHistory } from 'react-router';
 
 import { windowResized, backPressed, textChanged } from '../actions';
 
 import Gui from './Gui';
 import Renderer from './Renderer';
 
-let _f;
-
 class EditorScene extends React.Component {
-  updateDimensions() {
-    this.props.windowResized(window.innerWidth, window.innerHeight);
-  }
-
   componentWillMount() {
+    this.updateDimensions = () => {
+      this.props.windowResized(window.innerWidth, window.innerHeight);
+    };
+
     this.updateDimensions();
-    _f = this.updateDimensions.bind(this);
-    window.addEventListener("resize", _f);
+    window.addEventListener("resize", this.updateDimensions);
   }
 
   componentWillUnmount() {
-    window.removeEventListener("resize", _f);
-  }
-
-  _onAnimate() {}
+    window.removeEventListener("resize", this.updateDimensions);
+  };
 
   render() {
     return (
       <div>
         <Gui />
-        <Renderer windowWidth={this.props.windowSize.width} windowHeight={this.props.windowSize.height}/>
+        <div id="render-wrapper">
+          <Renderer />
+        </div>
       </div>
     );
   }
@@ -42,11 +38,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  backPressed: (e) => {
-    dispatch(backPressed());
-    hashHistory.goBack();
-  },
-
   windowResized: (width, height) => {
     dispatch(windowResized(width, height));
   }

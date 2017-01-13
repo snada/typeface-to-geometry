@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { hashHistory } from 'react-router';
 
-import { heightChanged, textChanged, segmentsChanged, wireframeSwitched } from '../actions';
+import { backPressed, heightChanged, textChanged, segmentsChanged, wireframeSwitched } from '../actions';
 
 const guiStyle = {
   position: 'fixed',
@@ -20,6 +21,8 @@ class Gui extends React.Component {
         <input type="range" value={this.props.segments} min={1} max={10} step={1} onChange={this.props.segmentsChanged} /> Segments
         <br /><br />
         <input type="range" value={this.props.height} min={0} max={10} step={0.1} onChange={this.props.heightChanged} /> Height
+        <br /><br />
+        <input type="button" onClick={this.props.backPressed} value="Back"/>
       </div>
     );
   }
@@ -32,6 +35,11 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  backPressed: (e) => {
+    dispatch(backPressed());
+    hashHistory.goBack();
+  },
+
   textChanged: (event) => {
     dispatch(textChanged(event.target.value));
   },
