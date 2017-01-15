@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "electron-is-dev": "^0.1.2",
-    "electron-prebuilt-compile": "^1.4.12",
+    "electron-prebuilt-compile": "^1.4.14",
     "jsonfile": "^2.4.0",
     "react": "~15.3.0",
     "react-dom": "~15.3.0",
