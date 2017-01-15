@@ -1,6 +1,29 @@
 const THREE = require("three");
 import { hashHistory } from 'react-router';
 
+export const BEVEL_CHANGED = 'BEVEL_CHANGED';
+export const bevelChanged = () => {
+  return({
+    type: BEVEL_CHANGED
+  });
+};
+
+export const BEVEL_THICKNESS_CHANGED = 'BEVEL_THICKNESS_CHANGED';
+export const bevelThicknessChanged = (value) => {
+  return({
+    type: BEVEL_THICKNESS_CHANGED,
+    value
+  });
+};
+
+export const BEVEL_SIZE_CHANGED = 'BEVEL_SIZE_CHANGED';
+export const bevelSizeChanged = (value) => {
+  return({
+    type: BEVEL_SIZE_CHANGED,
+    value
+  });
+};
+
 export const CAMERA_CHANGED = 'CAMERA_CHANGED';
 export const cameraChanged = (position, rotation) => {
   return({
@@ -12,7 +35,7 @@ export const cameraChanged = (position, rotation) => {
 
 export const FONT_LOADED = 'FONT_LOADED';
 export const fontLoaded = (font) => {
-  return ({
+  return({
     type: FONT_LOADED,
     font
   });

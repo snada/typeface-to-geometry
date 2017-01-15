@@ -2,7 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 
-import { backPressed, heightChanged, textChanged, segmentsChanged, wireframeSwitched } from '../actions';
+import BevelGui from './BevelGui';
+
+import {
+  backPressed,
+  bevelChanged,
+  heightChanged,
+  textChanged,
+  segmentsChanged,
+  wireframeSwitched
+} from '../actions';
 
 const guiStyle = {
   position: 'fixed',
@@ -22,6 +31,9 @@ class Gui extends React.Component {
         <br /><br />
         <input type="range" value={this.props.height} min={0} max={10} step={0.1} onChange={this.props.heightChanged} /> Height
         <br /><br />
+        <input type="checkbox" onClick={this.props.bevelChanged} /> Bevel
+        <br /><br />
+        {this.props.bevel.active && <BevelGui />}
         <input type="button" onClick={this.props.backPressed} value="Back"/>
       </div>
     );
@@ -29,19 +41,24 @@ class Gui extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+  bevel: state.bevel,
   height: state.height,
   text: state.text,
   segments: state.segments
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  backPressed: (e) => {
+  backPressed: (event) => {
     dispatch(backPressed());
     hashHistory.goBack();
   },
 
   textChanged: (event) => {
     dispatch(textChanged(event.target.value));
+  },
+
+  bevelChanged: (event) => {
+    dispatch(bevelChanged());
   },
 
   segmentsChanged: (event) => {

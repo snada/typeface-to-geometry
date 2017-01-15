@@ -71,6 +71,9 @@ class Renderer extends React.Component {
           {this.props.font instanceof THREE.Font && this.props.text !== "" &&
             <mesh>
               <textGeometry
+                bevelEnabled={this.props.bevel.active}
+                bevelThickness={this.props.bevel.thickness}
+                bevelSize={this.props.bevel.size}
                 font={this.props.font}
                 text={this.props.text}
                 size={1}
@@ -106,6 +109,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   text: state.text,
+  bevel: state.bevel,
   wireframe: state.wireframe,
   segments: state.segments,
   font: state.font,
