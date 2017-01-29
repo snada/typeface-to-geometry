@@ -1,6 +1,16 @@
 const THREE = require("three");
 import { hashHistory } from 'react-router';
 
+import alphabetExporter from '../libs/alphabetExporter';
+
+export const SAVE_ALPHABET = 'SAVE_ALPHABET';
+export const saveAlphabet = (path) => {
+  return(dispatch, getState) => {
+    let state = getState();
+    alphabetExporter(path, state.font, state.segments, state.height);
+  };
+};
+
 export const BEVEL_CHANGED = 'BEVEL_CHANGED';
 export const bevelChanged = () => {
   return({
