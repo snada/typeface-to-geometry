@@ -1,15 +1,12 @@
 import jsonfile from 'jsonfile';
 const THREE = require("three");
 
-export default (path, font, segments, height) => {
+export default (path, font, segments, height, size) => {
   let glyphs = {};
   for(var glyph in font.data.glyphs) {
-
-  // PARAMETRIZE SIZE; HEIGHT, SEGMENTS! EVEN BEVEL
-
     const g = new THREE.TextGeometry(glyph, {
       font: font,
-      size: 0.12,
+      size: size,
       height: height,
       curveSegments: segments
     });
@@ -35,7 +32,7 @@ export default (path, font, segments, height) => {
         normals.push(glyphs[property].faces[index].vertexNormals[index2].x);
         normals.push(glyphs[property].faces[index].vertexNormals[index2].y);
         normals.push(glyphs[property].faces[index].vertexNormals[index2].z);
-        
+
         vertices.push(glyphs[property].vertices[glyphs[property].faces[index].a].x);
         vertices.push(glyphs[property].vertices[glyphs[property].faces[index].a].y);
         vertices.push(glyphs[property].vertices[glyphs[property].faces[index].a].z);

@@ -13,6 +13,7 @@ import { Router, hashHistory, Route, IndexRoute, Link } from 'react-router';
 
 import text from './reducers/text';
 import font from './reducers/font';
+import size from './reducers/size';
 import bevel from './reducers/bevel';
 import camera from './reducers/camera';
 import height from './reducers/height';
@@ -21,7 +22,7 @@ import wireframe from './reducers/wireframe';
 import windowSize from './reducers/windowSize';
 
 let store = createStore(
-  combineReducers({ text, font, bevel, camera, height, segments, wireframe, windowSize }),
+  combineReducers({ text, font, size, bevel, camera, height, segments, wireframe, windowSize }),
   applyMiddleware(thunk, createLogger())
 );
 

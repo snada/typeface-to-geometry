@@ -14,6 +14,7 @@ import {
   bevelChanged,
   heightChanged,
   textChanged,
+  sizeChanged,
   saveAlphabet,
   segmentsChanged,
   wireframeSwitched
@@ -37,6 +38,8 @@ class Gui extends React.Component {
         <br /><br />
         <input type="range" value={this.props.height} min={0} max={10} step={0.1} onChange={this.props.heightChanged} /> Height
         <br /><br />
+        <input type="range" value={this.props.size} min={0.01} max={3} step={0.01} onChange={this.props.sizeChanged} /> Size
+        <br /><br />
         <input type="checkbox" onClick={this.props.bevelChanged} /> Bevel
         <br /><br />
         {this.props.bevel.active && <BevelGui />}
@@ -52,6 +55,7 @@ const mapStateToProps = (state) => ({
   bevel: state.bevel,
   height: state.height,
   text: state.text,
+  size: state.size,
   font: state.font,
   segments: state.segments
 });
@@ -72,6 +76,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   textChanged: (event) => {
     dispatch(textChanged(event.target.value));
+  },
+
+  sizeChanged: (event) => {
+    dispatch(sizeChanged(event.target.value));
   },
 
   bevelChanged: (event) => {

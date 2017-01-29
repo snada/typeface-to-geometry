@@ -76,7 +76,7 @@ class Renderer extends React.Component {
                 bevelSize={this.props.bevel.size}
                 font={this.props.font}
                 text={this.props.text}
-                size={1}
+                size={this.props.size}
                 height={this.props.height}
                 curveSegments={this.props.segments}
                 dynamic={true}
@@ -109,6 +109,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   text: state.text,
+  size: state.size,
   bevel: state.bevel,
   wireframe: state.wireframe,
   segments: state.segments,

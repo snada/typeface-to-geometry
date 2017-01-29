@@ -7,8 +7,16 @@ export const SAVE_ALPHABET = 'SAVE_ALPHABET';
 export const saveAlphabet = (path) => {
   return(dispatch, getState) => {
     let state = getState();
-    alphabetExporter(path, state.font, state.segments, state.height);
+    alphabetExporter(path, state.font, state.segments, state.height, state.size);
   };
+};
+
+export const SIZE_CHANGED = 'SIZE_CHANGED';
+export const sizeChanged = (value) => {
+  return({
+    type: SIZE_CHANGED,
+    value
+  });
 };
 
 export const BEVEL_CHANGED = 'BEVEL_CHANGED';
