@@ -53,8 +53,7 @@ const mapStateToProps = (state) => ({
   height: state.height,
   text: state.text,
   font: state.font,
-  segments: state.segments,
-  glyphs: state.glyphs
+  segments: state.segments
 });
 
 const mapDispatchToProps = (dispatch) => ({
