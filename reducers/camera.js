@@ -1,6 +1,6 @@
 import { CAMERA_CHANGED, BACK_PRESSED } from '../actions';
 
-import THREE from 'three';
+import * as THREE from 'three'
 
 const CAMERA_DEFAULT_POSITION = new THREE.Vector3(-2, 1, 5);
 const CAMERA_DEFAULT_ROTATION = new THREE.Euler(0, 0, 0);

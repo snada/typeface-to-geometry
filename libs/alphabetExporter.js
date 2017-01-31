@@ -1,5 +1,6 @@
 import jsonfile from 'jsonfile';
-const THREE = require("three");
+
+import * as THREE from 'three'
 
 export default (path, font, segments, height, size) => {
   let glyphs = {};

@@ -1,4 +1,5 @@
-const THREE = require("three");
+import * as THREE from 'three';
+
 import { hashHistory } from 'react-router';
 
 import alphabetExporter from '../libs/alphabetExporter';
