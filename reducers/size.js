@@ -8,7 +8,7 @@ export default (state = DEFAULT_SIZE, action) => {
       return DEFAULT_SIZE;
 
     case SIZE_CHANGED:
-      return action.value;
+      return +action.value;
 
     default:
       return state;
