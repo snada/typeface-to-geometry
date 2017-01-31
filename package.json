@@ -18,7 +18,7 @@
     "three.js",
     "geometry"
   ],
-  "author": "snada",
+  "author": "Stefano Nada <stefano.nada@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/snada/typeface-to-geometry/issues"
@@ -50,6 +50,8 @@
     "react-three-renderer": "^3.0.2",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "semantic-ui-css": "^2.2.4",
+    "semantic-ui-react": "^0.64.5",
     "three": "^0.82.1"
   }
 }

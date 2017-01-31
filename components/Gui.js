@@ -11,6 +11,8 @@ import { SketchPicker } from 'react-color';
 
 import alphabetExporter from '../libs/alphabetExporter';
 
+import { Accordion, Button, Checkbox, Input } from 'semantic-ui-react';
+
 import {
   backPressed,
   bevelChanged,
@@ -30,27 +32,27 @@ const guiStyle = {
 };
 
 class Gui extends React.Component {
+  content() {
+    let bevelContent = <div><Checkbox value={this.props.bevel.active.toString()} onChange={this.props.bevelChanged} /><br /><br /></div>;
+    bevelContent = this.props.bevel.active ? <div>{bevelContent}<BevelGui /></div> : <div>{bevelContent}</div>;
+
+    return [
+      { title: 'Text', content: <Input value={this.props.text} onChange={this.props.textChanged} /> },
+      { title: 'Wireframe', content: <Checkbox value={this.props.wireframe} onChange={this.props.wireframeSwitched} /> },
+      { title: 'Segments', content: <Input type="number" step={1} min={1} value={this.props.segments} onChange={this.props.segmentsChanged} /> },
+      { title: 'Height', content: <Input type="number" step={0.01} value={this.props.height} onChange={this.props.heightChanged} /> },
+      { title: 'Size', content: <Input type="number" step={0.01} min={0.01} value={this.props.size} onChange={this.props.sizeChanged} /> },
+      { title: 'Color', content: <SketchPicker color={this.props.color} onChange={this.props.colorChanged} /> },
+      { title: 'Bevel', content: bevelContent },
+      { title: 'Save Alphabet', content: <Button onClick={this.props.saveAlphabet}>Save</Button> },
+      { title: 'Back', content: <Button onClick={this.props.backPressed}>Back</Button> },
+    ];
+  }
+
   render() {
     return (
       <div style={guiStyle}>
-        <input type="text" value={this.props.text} onChange={this.props.textChanged} style={guiStyle} />
-        <br /><br />
-        <input type="checkbox" onClick={this.props.wireframeSwitched} /> Wireframe
-        <br /><br />
-        <input type="range" value={this.props.segments} min={1} max={10} step={1} onChange={this.props.segmentsChanged} /> Segments
-        <br /><br />
-        <input type="range" value={this.props.height} min={0} max={10} step={0.1} onChange={this.props.heightChanged} /> Height
-        <br /><br />
-        <input type="range" value={this.props.size} min={0.01} max={3} step={0.01} onChange={this.props.sizeChanged} /> Size
-        <br /><br />
-        <SketchPicker color={this.props.color} onChangeComplete={this.props.colorChanged} />
-        <br /><br />
-        <input type="checkbox" onClick={this.props.bevelChanged} /> Bevel
-        <br /><br />
-        {this.props.bevel.active && <BevelGui />}
-        <input type="button" onClick={this.props.saveAlphabet} value="Save alphabet"/>
-        <br /><br />
-        <input type="button" onClick={this.props.backPressed} value="Back"/>
+        <Accordion panels={this.content()} styled style={{width: '240px'}} />
       </div>
     );
   }
@@ -100,8 +102,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(segmentsChanged(event.target.value));
   },
 
-  wireframeSwitched: (event) => {
-    dispatch(wireframeSwitched(event.target.checked));
+  wireframeSwitched: (event, data) => {
+    console.log(data.checked);
+    dispatch(wireframeSwitched(data.checked));
   },
 
   heightChanged: (event) => {

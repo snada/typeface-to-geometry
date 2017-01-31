@@ -5,8 +5,8 @@ import {
   BACK_PRESSED
 } from '../actions';
 
-const DEFAULT_THICKNESS = 0.5;
-const DEFAULT_SIZE = 0.5;
+const DEFAULT_THICKNESS = 0.05;
+const DEFAULT_SIZE = 0.05;
 
 const DEFAULT_BEVEL = {
   active: false,
@@ -17,6 +17,7 @@ const DEFAULT_BEVEL = {
 export default (state = DEFAULT_BEVEL, action) => {
   switch (action.type) {
     case BEVEL_CHANGED:
+      console.log(state.active);
       return {
         ...state,
         active: !state.active
