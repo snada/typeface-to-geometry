@@ -12,6 +12,14 @@ export const saveAlphabet = (path) => {
   };
 };
 
+export const COLOR_CHANGED = 'COLOR_CHANGED';
+export const colorChanged = (color) => {
+  return({
+    type: COLOR_CHANGED,
+    color
+  });
+};
+
 export const SIZE_CHANGED = 'SIZE_CHANGED';
 export const sizeChanged = (value) => {
   return({

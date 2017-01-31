@@ -84,7 +84,7 @@ class Renderer extends React.Component {
                 dynamic={true}
               />
               <meshPhongMaterial
-  		          color={0x156289}
+  		          color={`rgba(${this.props.color.r},${this.props.color.g},${this.props.color.b},${this.props.color.a})`}
   		          emissive={0x072534}
                 side={THREE.DoubleSide}
                 shading={THREE.FlatShading}
@@ -113,6 +113,7 @@ const mapStateToProps = (state) => ({
   text: state.text,
   size: state.size,
   bevel: state.bevel,
+  color: state.color,
   wireframe: state.wireframe,
   segments: state.segments,
   font: state.font,

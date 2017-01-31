@@ -7,11 +7,14 @@ const { dialog, BrowserWindow } = remote;
 
 import BevelGui from './BevelGui';
 
+import { SketchPicker } from 'react-color';
+
 import alphabetExporter from '../libs/alphabetExporter';
 
 import {
   backPressed,
   bevelChanged,
+  colorChanged,
   heightChanged,
   textChanged,
   sizeChanged,
@@ -39,6 +42,8 @@ class Gui extends React.Component {
         <input type="range" value={this.props.height} min={0} max={10} step={0.1} onChange={this.props.heightChanged} /> Height
         <br /><br />
         <input type="range" value={this.props.size} min={0.01} max={3} step={0.01} onChange={this.props.sizeChanged} /> Size
+        <br /><br />
+        <SketchPicker color={this.props.color} onChangeComplete={this.props.colorChanged} />
         <br /><br />
         <input type="checkbox" onClick={this.props.bevelChanged} /> Bevel
         <br /><br />
@@ -84,6 +89,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   bevelChanged: (event) => {
     dispatch(bevelChanged());
+  },
+
+  colorChanged: (color) => {
+    console.log(color.rgb);
+    dispatch(colorChanged(color.rgb));
   },
 
   segmentsChanged: (event) => {
