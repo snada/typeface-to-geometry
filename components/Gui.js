@@ -29,7 +29,7 @@ const guiStyle = {
   position: 'fixed',
   left: 10,
   top: 10,
-  color: 'color'
+  color: 'gray'
 };
 
 class Gui extends React.Component {
