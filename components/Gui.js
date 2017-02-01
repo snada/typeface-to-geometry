@@ -28,7 +28,8 @@ import {
 const guiStyle = {
   position: 'fixed',
   left: 10,
-  top: 10
+  top: 10,
+  color: 'color'
 };
 
 class Gui extends React.Component {
@@ -60,6 +61,7 @@ class Gui extends React.Component {
 
 const mapStateToProps = (state) => ({
   bevel: state.bevel,
+  color: state.color,
   height: state.height,
   text: state.text,
   size: state.size,
@@ -94,7 +96,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   colorChanged: (color) => {
-    console.log(color.rgb);
+    console.log(`rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`);
     dispatch(colorChanged(color.rgb));
   },
 

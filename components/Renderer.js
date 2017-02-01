@@ -84,8 +84,8 @@ class Renderer extends React.Component {
                 dynamic={true}
               />
               <meshPhongMaterial
-  		          color={`rgba(${this.props.color.r},${this.props.color.g},${this.props.color.b},${this.props.color.a})`}
-  		          emissive={0x072534}
+                color={`rgba(${this.props.color.r},${this.props.color.g},${this.props.color.b},${this.props.color.a})`}
+                emissive={0x072534}
                 side={THREE.DoubleSide}
                 shading={THREE.FlatShading}
                 wireframe={this.props.wireframe}
