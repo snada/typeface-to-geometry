@@ -1,0 +1,4 @@
+--colors
+--recursive
+--require babel-register
+--timeout 5000

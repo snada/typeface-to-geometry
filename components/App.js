@@ -11,6 +11,8 @@ import createLogger from 'redux-logger';
 
 import { Router, hashHistory, Route, IndexRoute, Link } from 'react-router';
 
+import { routerMiddleware, syncHistoryWithStore, routerReducer } from 'react-router-redux'
+
 import text from './reducers/text';
 import font from './reducers/font';
 import size from './reducers/size';
@@ -22,17 +24,21 @@ import segments from './reducers/segments';
 import wireframe from './reducers/wireframe';
 import windowSize from './reducers/windowSize';
 
+const middleware = routerMiddleware(hashHistory);
+
 let store = createStore(
-  combineReducers({ text, font, size, bevel, color, camera, height, segments, wireframe, windowSize }),
-  applyMiddleware(thunk, createLogger())
+  combineReducers({ text, font, size, bevel, color, camera, height, segments, wireframe, windowSize, routing: routerReducer }),
+  applyMiddleware(thunk, middleware, createLogger())
 );
+
+const syncHistory = syncHistoryWithStore(hashHistory, store);
 
 import DropScene from './components/DropScene';
 import EditorScene from './components/EditorScene';
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory}>
+    <Router history={syncHistory}>
       <Route path="/">
         <IndexRoute component={DropScene} />
         <Route path="editor" component={EditorScene} />

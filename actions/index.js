@@ -1,14 +1,13 @@
 import * as THREE from 'three';
 
 import { hashHistory } from 'react-router';
-
-import alphabetExporter from '../libs/alphabetExporter';
+import { push } from 'react-router-redux'
 
 export const SAVE_ALPHABET = 'SAVE_ALPHABET';
-export const saveAlphabet = (path) => {
+export const saveAlphabet = (path, exporter) => {
   return(dispatch, getState) => {
     let state = getState();
-    alphabetExporter(path, state.font, state.segments, state.height, state.size);
+    exporter(path, state.font, state.segments, state.height, state.size);
   };
 };
 
@@ -62,10 +61,10 @@ export const cameraChanged = (position, rotation) => {
 
 export const FONT_LOADED = 'FONT_LOADED';
 export const fontLoaded = (font) => {
-  return({
-    type: FONT_LOADED,
-    font
-  });
+  return (dispatch) => {
+    dispatch(push('editor'));
+    dispatch({type: FONT_LOADED, font});
+  }
 };
 
 export const JSON_DROPPED = 'JSON_DROPPED';
@@ -78,7 +77,6 @@ export const jsonDropped = (files) => {
 
       loader.load(files[0].path, (loadedFont) => {
         dispatch(fontLoaded(loadedFont));
-        hashHistory.push('editor');
       });
     }
   };
