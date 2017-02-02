@@ -7,14 +7,6 @@ import jsonfile from 'jsonfile';
 import * as THREE from 'three';
 
 import * as actions from '../actions';
-import alphabetExporter from '../libs/alphabetExporter';
-
-import proxyquire from 'proxyquire';
-proxyquire('react-router', {
-  hashHistory: {
-    push: (param) => {}
-  }
-});
 
 describe('actions', () => {
   describe('save alphabet', () => {
