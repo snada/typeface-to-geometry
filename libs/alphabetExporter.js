@@ -1,6 +1,6 @@
 import jsonfile from 'jsonfile';
 
-import * as THREE from 'three'
+import * as THREE from 'three';
 
 export default (path, font, segments, height, size) => {
   let glyphs = {};
@@ -52,9 +52,5 @@ export default (path, font, segments, height, size) => {
     };
   }
 
-  jsonfile.writeFile(path, alphabet, (err) => {
-    if(err) {
-      console.error(err);
-    }
-  });
+  jsonfile.writeFileSync(path, alphabet);
 };

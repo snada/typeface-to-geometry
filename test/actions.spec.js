@@ -112,9 +112,8 @@ describe('actions', () => {
       expect(returnedFunction(undefined)).to.eql(expectedAction);
     });
 
-    it('should notify about json being dropped with an empty font if file is undefined', (done) => {
+    it('should notify about json being dropped', (done) => {
       const path = `${__dirname}/mocks/helvetiker_regular.typeface.json`;
-      const loader = new THREE.FontLoader();
 
       let loadedFont = new THREE.Font(jsonfile.readFileSync(path));
 
