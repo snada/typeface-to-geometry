@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 
-const { remote } = require('electron')
+const { remote } = require('electron');
 const { dialog, BrowserWindow } = remote;
 
 import BevelGui from './BevelGui';
@@ -104,7 +104,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   wireframeSwitched: (event, data) => {
-    console.log(data.checked);
     dispatch(wireframeSwitched(data.checked));
   },
 
