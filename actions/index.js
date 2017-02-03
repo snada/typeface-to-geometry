@@ -7,7 +7,7 @@ export const SAVE_ALPHABET = 'SAVE_ALPHABET';
 export const saveAlphabet = (path, exporter) => {
   return(dispatch, getState) => {
     let state = getState();
-    exporter(path, state.font, state.segments, state.height, state.size);
+    exporter(path, state.font, state.segments, state.height, state.size, state.color);
   };
 };
 

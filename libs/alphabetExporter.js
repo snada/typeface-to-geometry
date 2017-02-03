@@ -2,7 +2,7 @@ import jsonfile from 'jsonfile';
 
 import * as THREE from 'three';
 
-export default (path, font, segments, height, size) => {
+export default (path, font, segments, height, size, color) => {
   let glyphs = {};
   for(var glyph in font.data.glyphs) {
     const g = new THREE.TextGeometry(glyph, {
@@ -19,11 +19,16 @@ export default (path, font, segments, height, size) => {
   let alphabet = {};
 
   for(var property in glyphs) {
+    let colors = [];
     let normals = [];
     let vertices = [];
 
     for(var index in glyphs[property].faces) {
       for(var index2 in glyphs[property].faces[index].vertexNormals) {
+        colors.push((color.r / 255), (color.g / 255), (color.b / 255), color.a);
+        colors.push((color.r / 255), (color.g / 255), (color.b / 255), color.a);
+        colors.push((color.r / 255), (color.g / 255), (color.b / 255), color.a);
+
         normals.push(glyphs[property].faces[index].vertexNormals[index2].x);
         normals.push(glyphs[property].faces[index].vertexNormals[index2].y);
         normals.push(glyphs[property].faces[index].vertexNormals[index2].z);
@@ -47,6 +52,7 @@ export default (path, font, segments, height, size) => {
     }
 
     alphabet[property] = {
+      colors,
       normals,
       vertices
     };
