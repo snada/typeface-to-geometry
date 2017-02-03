@@ -31,6 +31,6 @@ describe('alphabetExporter', () => {
 
     expect(expected).to.eql(output);
 
-    //fs.unlink(outputPath);
+    fs.unlink(outputPath);
   });
 });
