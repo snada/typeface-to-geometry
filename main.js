@@ -23,8 +23,8 @@ function createWindow () {
   mainWindow = new BrowserWindow({
     'width': 800,
     'height': 600,
-    'min-width': 260,
-    'min-height': 587,
+    'minWidth': 260,
+    'minHeight': 587,
     'show': false
   });
   mainWindow.once('ready-to-show', function() {
