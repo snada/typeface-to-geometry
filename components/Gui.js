@@ -96,7 +96,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   colorChanged: (color) => {
-    console.log(`rgba(${color.rgb.r},${color.rgb.g},${color.rgb.b},${color.rgb.a})`);
     dispatch(colorChanged(color.rgb));
   },
 

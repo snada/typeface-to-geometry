@@ -17,7 +17,6 @@ const DEFAULT_BEVEL = {
 export default (state = DEFAULT_BEVEL, action) => {
   switch (action.type) {
     case BEVEL_CHANGED:
-      console.log(state.active);
       return {
         ...state,
         active: !state.active
