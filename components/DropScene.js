@@ -12,6 +12,11 @@ class DropScene extends React.Component {
     this.toggleHover = () => {
       this.setState({ hover: !this.state.hover });
     };
+
+    this.toggleAndDrop = (event) => {
+      this.toggleHover();
+      this.props.jsonDropped(event);
+    }
   }
 
   render() {
@@ -19,7 +24,7 @@ class DropScene extends React.Component {
       <div className={`centered drop ${this.state.hover ? 'hover' : ''}`}
         onDragEnter={this.toggleHover}
         onDragLeave={this.toggleHover}
-        onDrop={this.props.jsonDropped}
+        onDrop={this.toggleAndDrop}
       >
         <p className="centered">
           {JSON.stringify(this.props.font)}
@@ -35,6 +40,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   jsonDropped: (event) => {
+    //this.toggleHover();
     if(event.dataTransfer.files.length == 1 && event.dataTransfer.files[0].path.endsWith('.json')
     ) {
       dispatch(jsonDropped([event.dataTransfer.files[0]]));
