@@ -27,20 +27,17 @@ class DropScene extends React.Component {
         onDrop={this.toggleAndDrop}
       >
         <p className="centered">
-          {JSON.stringify(this.props.font)}
+          <h1><i className="arrow circle down icon"></i></h1>
         </p>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  font: state.font
-});
+const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   jsonDropped: (event) => {
-    //this.toggleHover();
     if(event.dataTransfer.files.length == 1 && event.dataTransfer.files[0].path.endsWith('.json')
     ) {
       dispatch(jsonDropped([event.dataTransfer.files[0]]));
