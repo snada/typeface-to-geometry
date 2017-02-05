@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "./node_modules/.bin/electron .",
-    "test": "node_modules/.bin/babel-node node_modules/.bin/babel-istanbul cover node_modules/mocha/bin/_mocha test/*.spec.js test/**/*.spec.js"
+    "test": "node_modules/.bin/babel-node node_modules/.bin/babel-istanbul cover node_modules/mocha/bin/_mocha test/*.spec.js test/**/*.spec.js",
+    "lint": "node_modules/.bin/eslint ./actions ./components ./libs ./reducers ./test"
   },
   "repository": {
     "type": "git",
@@ -31,8 +32,12 @@
     "chai-as-promised": "^6.0.0",
     "chai-enzyme": "^0.6.1",
     "chai-spies": "^0.7.1",
+    "codeclimate-test-reporter": "^0.4.0",
     "electron-devtools-installer": "^2.0.1",
     "enzyme": "^2.7.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "react-addons-test-utils": "^15.4.2",
