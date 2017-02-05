@@ -20,7 +20,7 @@ export default (state = DEFAULT_BEVEL, action) => {
       return {
         ...state,
         active: !state.active
-      }
+      };
 
     case BEVEL_THICKNESS_CHANGED:
       return {
@@ -40,4 +40,4 @@ export default (state = DEFAULT_BEVEL, action) => {
     default:
       return state;
   }
-}
+};

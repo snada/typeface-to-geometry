@@ -13,4 +13,4 @@ export default (state = DEFAULT_HEIGHT, action) => {
     default:
       return state;
   }
-}
+};

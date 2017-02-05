@@ -1,6 +1,6 @@
-import { CAMERA_CHANGED, BACK_PRESSED } from '../actions';
+import * as THREE from 'three';
 
-import * as THREE from 'three'
+import { CAMERA_CHANGED, BACK_PRESSED } from '../actions';
 
 const CAMERA_DEFAULT_POSITION = new THREE.Vector3(-2, 1, 5);
 const CAMERA_DEFAULT_ROTATION = new THREE.Euler(0, 0, 0);
@@ -24,4 +24,4 @@ export default (state = DEFAULT_CAMERA, action) => {
     default:
       return state;
   }
-}
+};

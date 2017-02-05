@@ -13,4 +13,4 @@ export default (state = DEFAULT_SIZE, action) => {
     default:
       return state;
   }
-}
+};

@@ -13,4 +13,4 @@ export default (state = DEFAULT_WIREFRAME, action) => {
     default:
       return state;
   }
-}
+};

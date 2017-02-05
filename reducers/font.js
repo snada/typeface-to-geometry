@@ -1,4 +1,4 @@
-import { JSON_DROPPED, FONT_LOADED, BACK_PRESSED } from '../actions';
+import { FONT_LOADED, BACK_PRESSED } from '../actions';
 
 export default (state = {}, action) => {
   switch (action.type) {
@@ -11,4 +11,4 @@ export default (state = {}, action) => {
     default:
       return state;
   }
-}
+};

@@ -8,4 +8,4 @@ export default (state = { width: 0, height: 0 }, action) => {
     default:
       return state;
   }
-}
+};

@@ -1,6 +1,6 @@
 import { BACK_PRESSED, TEXT_CHANGED } from '../actions';
 
-const DEFAULT_TEXT = "text";
+const DEFAULT_TEXT = 'text';
 
 export default (state = DEFAULT_TEXT, action) => {
   switch (action.type) {
@@ -13,4 +13,4 @@ export default (state = DEFAULT_TEXT, action) => {
     default:
       return state;
   }
-}
+};

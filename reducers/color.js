@@ -18,4 +18,4 @@ export default (state = DEFAULT_COLOR, action) => {
     default:
       return state;
   }
-}
+};

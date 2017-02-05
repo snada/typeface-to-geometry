@@ -13,4 +13,4 @@ export default (state = DEFAULT_SEGMENTS, action) => {
     default:
       return state;
   }
-}
+};
