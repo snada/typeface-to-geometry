@@ -72,7 +72,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   saveAlphabet: () => {
     dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), { filters: [{ name: 'json', extensions: ['json'] }] }, (path) => {
-      if(path) {
+      if (path) {
         dispatch(saveAlphabet(path, alphabetExporter));
       }
     });

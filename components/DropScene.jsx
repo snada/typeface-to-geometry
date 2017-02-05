@@ -20,15 +20,14 @@ class DropScene extends React.Component {
   }
 
   render() {
-    return(
-      <div className={`centered drop ${this.state.hover ? 'hover' : ''}`}
+    return (
+      <div
+        className={`centered drop ${this.state.hover ? 'hover' : ''}`}
         onDragEnter={this.toggleHover}
         onDragLeave={this.toggleHover}
         onDrop={this.toggleAndDrop}
       >
-        <p className="centered">
-          <h1><i className="arrow circle down icon"></i></h1>
-        </p>
+      <h1 className="centered"><i className="arrow circle down icon" /></h1>
       </div>
     );
   }
@@ -38,7 +37,7 @@ const mapStateToProps = (state) => ({});
 
 const mapDispatchToProps = (dispatch) => ({
   jsonDropped: (event) => {
-    if(event.dataTransfer.files.length == 1 && event.dataTransfer.files[0].path.endsWith('.json')
+    if (event.dataTransfer.files.length == 1 && event.dataTransfer.files[0].path.endsWith('.json')
     ) {
       dispatch(jsonDropped([event.dataTransfer.files[0]]));
     }
