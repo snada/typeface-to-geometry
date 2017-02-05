@@ -1,8 +1,8 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/text';
 
-import { textChanged, TEXT_CHANGED, backPressed, BACK_PRESSED } from '../../actions';
+import { textChanged, backPressed } from '../../actions';
 
 describe('reducers', () => {
   describe('text', () => {

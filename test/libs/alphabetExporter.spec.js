@@ -1,12 +1,12 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import * as THREE from 'three';
-
-import alphabetExporter from '../../libs/alphabetExporter';
 
 import fs from 'fs';
 import path from 'path';
 import jsonfile from 'jsonfile';
+
+import alphabetExporter from '../../libs/alphabetExporter';
 
 describe('alphabetExporter', () => {
   it('should export the alphabet', () => {
@@ -26,8 +26,8 @@ describe('alphabetExporter', () => {
 
     alphabetExporter(outputPath, loadedFont, segments, height, size, color);
 
-    let expected = jsonfile.readFileSync(path.resolve('test/mocks/expected.json'));
-    let output = jsonfile.readFileSync(outputPath);
+    const expected = jsonfile.readFileSync(path.resolve('test/mocks/expected.json'));
+    const output = jsonfile.readFileSync(outputPath);
 
     expect(expected).to.eql(output);
 

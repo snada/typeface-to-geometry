@@ -1,16 +1,12 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/bevel';
 
 import {
   backPressed,
-  BACK_PRESSED,
   bevelChanged,
-  BEVEL_CHANGED,
   bevelSizeChanged,
-  BEVEL_SIZE_CHANGED,
-  bevelThicknessChanged,
-  BEVEL_THICKNESS_CHANGED
+  bevelThicknessChanged
 } from '../../actions';
 
 const DEFAULT_THICKNESS = 0.05;
@@ -30,17 +26,17 @@ describe('reducers', () => {
 
     it('should change active bevel state', () => {
       const state = { active: false, thickness: 1, size: 2 };
-      expect(reducer(state, bevelChanged(true))).to.eql({...state, active: true});
+      expect(reducer(state, bevelChanged(true))).to.eql({ ...state, active: true });
     });
 
     it('should change size bevel state', () => {
       const state = { active: false, thickness: 1, size: 2 };
-      expect(reducer(state, bevelSizeChanged(100))).to.eql({...state, size: 100});
+      expect(reducer(state, bevelSizeChanged(100))).to.eql({ ...state, size: 100 });
     });
 
     it('should change thickness bevel state', () => {
       const state = { active: false, thickness: 1, size: 2 };
-      expect(reducer(state, bevelThicknessChanged(100))).to.eql({...state, thickness: 100});
+      expect(reducer(state, bevelThicknessChanged(100))).to.eql({ ...state, thickness: 100 });
     });
 
     it('should reset when back is pressed', () => {

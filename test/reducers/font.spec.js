@@ -1,8 +1,8 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/font';
 
-import { backPressed, BACK_PRESSED, FONT_LOADED } from '../../actions';
+import { backPressed, FONT_LOADED } from '../../actions';
 
 describe('reducers', () => {
   describe('font', () => {

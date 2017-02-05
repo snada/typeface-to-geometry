@@ -1,8 +1,8 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/windowSize';
 
-import { windowResized, HEIGHT_CHANGED } from '../../actions';
+import { windowResized } from '../../actions';
 
 describe('reducers', () => {
   describe('windowSize', () => {

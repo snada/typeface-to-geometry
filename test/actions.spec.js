@@ -1,12 +1,11 @@
 import chai, { expect } from 'chai';
 import spies from 'chai-spies';
-chai.use(spies);
 
 import jsonfile from 'jsonfile';
 
-import * as THREE from 'three';
-
 import * as actions from '../actions';
+
+chai.use(spies);
 
 describe('actions', () => {
   describe('save alphabet', () => {
@@ -14,9 +13,9 @@ describe('actions', () => {
       const path = '/tmp/file.json';
 
       const getState = () => ({ font: 'font', segments: 'segments', height: 'height', size: 'size' });
-      let spy = chai.spy();
+      const spy = chai.spy();
 
-      let returnedFunction = actions.saveAlphabet(path, spy);
+      const returnedFunction = actions.saveAlphabet(path, spy);
 
       returnedFunction(undefined, getState);
 
@@ -38,7 +37,7 @@ describe('actions', () => {
         }
       };
 
-      expect(actions.colorChanged({r, g, b, a})).to.eql(expectedAction);
+      expect(actions.colorChanged({ r, g, b, a })).to.eql(expectedAction);
     });
   });
 
@@ -82,7 +81,7 @@ describe('actions', () => {
       const posValue = 1;
       const rotValue = 2;
       const position = { posValue };
-      const rotation = { rotValue }
+      const rotation = { rotValue };
       const expectedAction = { type: actions.CAMERA_CHANGED, position, rotation };
 
       expect(actions.cameraChanged(position, rotation)).to.eql(expectedAction);
@@ -115,9 +114,9 @@ describe('actions', () => {
     it('should notify about json being dropped', (done) => {
       const path = `${__dirname}/mocks/helvetiker_regular.typeface.json`;
 
-      let loadedFont = new THREE.Font(jsonfile.readFileSync(path));
+      // const loadedFont = new THREE.Font(jsonfile.readFileSync(path));
 
-      let returnedFunction = actions.jsonDropped([{path}]);
+      const returnedFunction = actions.jsonDropped([{ path }]);
 
       global.XMLHttpRequest = function XMLHttpRequest() {
         this.loadListener = undefined;
@@ -125,30 +124,31 @@ describe('actions', () => {
         this.status = 200;
 
         this.addEventListener = (type, listener) => {
-          if(type === 'load') {
+          if (type === 'load') {
             this.loadListener = listener;
           }
         };
 
-        this.open = (method, url, async) => {
+        this.open = (method, url) => {
           this.url = url;
         };
 
-        this.send = (data) => {
-          let response = { status: 200, target: { response: JSON.stringify(jsonfile.readFileSync(this.url)) }};
+        this.send = () => {
+          const response = {
+            status: 200, target: { response: JSON.stringify(jsonfile.readFileSync(this.url)) }
+          };
           this.loadListener(response);
         };
       };
 
-      const expectedAction = { type: actions.FONT_LOADED, font: loadedFont };
-
-      let spy = chai.spy();
+      const spy = chai.spy();
 
       returnedFunction(spy);
 
       delete global.XMLHttpRequest;
 
-      //expect(spy).to.have.been.called.with(expectedAction);
+      // const expectedAction = { type: actions.FONT_LOADED, font: loadedFont };
+      // expect(spy).to.have.been.called.with(expectedAction);
       expect(spy).to.have.been.called();
       done();
     });

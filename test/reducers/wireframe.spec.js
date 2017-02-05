@@ -1,8 +1,8 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/wireframe';
 
-import { wireframeSwitched, WIREFRAME_SWITCHED, backPressed, BACK_PRESSED } from '../../actions';
+import { wireframeSwitched, backPressed } from '../../actions';
 
 describe('reducers', () => {
   describe('wireframe', () => {

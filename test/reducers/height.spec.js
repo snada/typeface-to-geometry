@@ -1,8 +1,8 @@
-import chai, { expect } from 'chai';
+import { expect } from 'chai';
 
 import reducer from '../../reducers/height';
 
-import { heightChanged, HEIGHT_CHANGED, backPressed, BACK_PRESSED } from '../../actions';
+import { heightChanged, backPressed } from '../../actions';
 
 describe('reducers', () => {
   describe('height', () => {
