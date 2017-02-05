@@ -6,7 +6,9 @@ const BrowserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 
-// import installExtension, { REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } from 'electron-devtools-installer'
+// import installExtension, {
+//     REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS
+// } from 'electron-devtools-installer'
 //
 // installExtension(REACT_DEVELOPER_TOOLS)
 //     .then((name) => console.log(`Added Extension:  ${name}`))
@@ -19,15 +21,16 @@ const url = require('url');
 
 let mainWindow;
 
-function createWindow () {
+function createWindow() {
   mainWindow = new BrowserWindow({
-    'width': 800,
-    'height': 600,
-    'minWidth': 260,
-    'minHeight': 587,
-    'show': false
+    width: 800,
+    height: 600,
+    minWidth: 260,
+    minHeight: 587,
+    show: false
   });
-  mainWindow.once('ready-to-show', function() {
+
+  mainWindow.once('ready-to-show', () => {
     mainWindow.show();
   });
 
@@ -39,20 +42,20 @@ function createWindow () {
 
   // mainWindow.webContents.openDevTools()
 
-  mainWindow.on('closed', function () {
+  mainWindow.on('closed', () => {
     mainWindow = null;
   });
 }
 
 app.on('ready', createWindow);
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
   }
 });
 
-app.on('activate', function () {
+app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }

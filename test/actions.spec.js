@@ -12,7 +12,12 @@ describe('actions', () => {
     it('should notify about saving alphabet', () => {
       const path = '/tmp/file.json';
 
-      const getState = () => ({ font: 'font', segments: 'segments', height: 'height', size: 'size' });
+      const getState = () => ({
+        font: 'font',
+        segments: 'segments',
+        height: 'height',
+        size: 'size'
+      });
       const spy = chai.spy();
 
       const returnedFunction = actions.saveAlphabet(path, spy);
