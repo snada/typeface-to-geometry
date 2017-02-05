@@ -6,6 +6,7 @@
     "node": true
   },
   "rules": {
-    "comma-dangle": 0
+    "comma-dangle": 0,
+    "import/no-unresolved": 0
   }
 }
